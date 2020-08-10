@@ -1,9 +1,17 @@
 <template>
-  <form @submit.prevent="submitForm">
+  <form @submit.prevent="validateForm(submitForm)">
     <div class="field">
       <label class="label">Title</label>
       <div class="control">
-        <input v-model="todo.title" class="input" type="text" placeholder="I.E Go shopping" />
+        <input
+          v-model="todo.title"
+          class="input"
+          :class="titleError && 'is-danger'"
+          type="text"
+          id="title"
+          placeholder="I.E Go shopping"
+        />
+        <p v-if="titleError" class="help is-danger">Title field cannot be empty!</p>
       </div>
     </div>
     <div class="field">
@@ -12,6 +20,7 @@
         <textarea
           v-model="todo.content"
           class="textarea"
+          id="content"
           placeholder="I.E Buy onions and tortillas."
         ></textarea>
       </div>
@@ -32,7 +41,26 @@
 </template>
 
 <script>
+import { ref } from '@vue/composition-api';
+
 export default {
   props: ['submitForm', 'todo'],
+  setup() {
+    const titleError = ref(false);
+
+    const validateForm = (submitForm) => {
+      titleError.value = false;
+
+      const title = document.querySelector('#title').value;
+
+      if (title) submitForm();
+      else if (!title) titleError.value = true;
+    };
+
+    return {
+      validateForm,
+      titleError,
+    };
+  },
 };
 </script>
