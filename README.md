@@ -1,4 +1,4 @@
-# makeit
+# makeitnow
 
 Todo app buidl with Vue 2 using Vue 3 composition api and hooks (@u3u/vue-hooks) made for it.
 
