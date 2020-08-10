@@ -1,4 +1,6 @@
-# makeit
+# makeitnow
+
+Todo app buidl with Vue 2 using Vue 3 composition api and hooks (@u3u/vue-hooks) made for it.
 
 ## Project setup
 ```
@@ -20,5 +22,4 @@ yarn build
 yarn lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See deployed on -> https://makeitnow.herokuapp.com/
